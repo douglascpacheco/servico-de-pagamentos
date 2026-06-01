@@ -1,6 +1,6 @@
 # 💳 Serviço de Pagamento
 
-Projeto desenvolvido em JavaScript como parte da atividade prática da disciplina, utilizando Programação Orientada a Objetos (POO) e testes automatizados com Mocha e Node Assert.
+Projeto desenvolvido em JavaScript como atividade de conclusão da disciplina **Programação para Automação de Testes**, com o objetivo de aplicar conceitos de **Programação Orientada a Objetos (POO)**, regras de negócio e testes automatizados utilizando **Mocha**, **Node Assert** e **Mochawesome**.
 
 ## 📋 Objetivo da Atividade
 
@@ -31,17 +31,28 @@ Cada pagamento deve possuir as seguintes propriedades:
 - Node.js
 - Mocha
 - Node Assert
+- Mochawesome
 
 ---
 
 ## 📂 Estrutura do Projeto
 
 ```text
-src/
- └── ServicoDePagamento.js
-
-test/
- └── ServicoDePagamento.test.js
+SERVICO-DE-PAGAMENTOS/
+│
+├── src/
+│   └── servicoDePagamento.js
+│
+├── test/
+│   └── servicoDePagamento.test.js
+│
+├── mochawesome-report/
+│   ├── mochawesome.html
+│   └── mochawesome.json
+│
+├── package.json
+├── package-lock.json
+└── .gitignore
 ```
 
 ---
@@ -83,7 +94,7 @@ console.log(
 
 ## 🧪 Testes Automatizados
 
-Foram desenvolvidos testes utilizando Mocha e Node Assert para validar:
+Foram desenvolvidos testes para validar:
 
 - Validação dos dados armazenados no pagamento
 - Registro de pagamento com categoria "cara"
@@ -92,24 +103,24 @@ Foram desenvolvidos testes utilizando Mocha e Node Assert para validar:
 
 ---
 
-## ▶️ Como Executar o Projeto
-
-Instalar as dependências:
-
-```bash
-npm install
-```
+## 📊 Relatório de Testes
 
 Executar os testes:
 
 ```bash
-npm test
+npx mocha
 ```
 
-ou
+Gerar relatório Mochawesome:
 
 ```bash
-npx mocha
+npx mocha --reporter mochawesome
+```
+
+Os relatórios são gerados automaticamente na pasta:
+
+```text
+mochawesome-report/
 ```
 
 ---
