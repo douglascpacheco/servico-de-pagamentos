@@ -1,0 +1,58 @@
+# CI - Trabalho Final - Serviço de Pagamentos
+# Pipeline com execução por push, manual e agendada
+
+# nome da pipeline
+name: 'CI - Serviço de Pagamentos'
+
+# gatilhos / triggers - regras de disparo
+# gatilho por push = executa ao enviar código para a branch master
+# gatilho manual = workflow_dispatch
+# gatilho agendado = schedule
+
+on:
+  push:
+    branches:
+      - master
+
+  workflow_dispatch:
+
+  schedule:
+    # executa toda segunda-feira às 09:00 UTC
+    - cron: '0 9 * * 1'
+
+# tarefas dentro da pipeline = jobs
+
+jobs:
+  # nome do job
+  testes-unitarios:
+    # máquina onde o job vai rodar
+    runs-on: ubuntu-latest
+
+    # passos do job
+    steps:
+      # clone do projeto
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      # instalação/configuração do Node.js
+      - name: Configurando Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'npm'
+
+      # instalação das dependências
+      - name: Instalando dependências
+        run: npm ci
+
+      # execução dos testes automatizados unitários
+      - name: Executando testes unitários
+        run: npm run unit
+
+      # armazenamento do relatório de testes gerado pelo Mochawesome
+      - name: Salvando relatório dos testes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-testes-unitarios
+          path: mochawesome-report/
