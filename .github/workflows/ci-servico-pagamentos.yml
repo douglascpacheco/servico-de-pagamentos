@@ -5,7 +5,7 @@
 name: 'CI - Serviço de Pagamentos'
 
 # gatilhos / triggers - regras de disparo
-# gatilho por push = executa ao enviar código para a branch master
+# gatilho por push = executa ao enviar código para a branch main
 # gatilho manual = workflow_dispatch
 # gatilho agendado = schedule
 
