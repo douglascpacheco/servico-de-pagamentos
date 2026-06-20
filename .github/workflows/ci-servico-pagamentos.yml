@@ -12,7 +12,7 @@ name: 'CI - Serviço de Pagamentos'
 on:
   push:
     branches:
-      - master
+      - main
 
   workflow_dispatch:
 
