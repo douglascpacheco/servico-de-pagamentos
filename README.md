@@ -125,6 +125,58 @@ mochawesome-report/
 
 ---
 
+## 🔄 Integração Contínua com GitHub Actions
+
+Este projeto possui uma pipeline de **Integração Contínua (CI)** configurada com **GitHub Actions**, com o objetivo de executar automaticamente os testes automatizados e armazenar o relatório de execução na própria pipeline.
+
+O arquivo da pipeline está localizado em:
+
+```text
+.github/workflows/ci-servico-pagamentos.yml
+
+Gatilhos da Pipeline
+
+A pipeline foi configurada para executar em três situações:
+
+Push na branch main: executa automaticamente sempre que houver envio de código para o repositório.
+Execução manual (workflow_dispatch): permite executar a pipeline manualmente pela aba Actions do GitHub.
+Execução agendada (schedule): permite executar a pipeline automaticamente em horários definidos por expressão cron.
+Etapas da Pipeline
+
+A pipeline executa as seguintes etapas:
+
+Realiza o checkout do repositório.
+Configura o ambiente com Node.js.
+Instala as dependências do projeto com npm ci.
+Executa os testes automatizados com npm run unit.
+Gera o relatório de testes com Mochawesome.
+Publica o relatório como artifact na execução da pipeline.
+Relatório na Pipeline
+
+Após a execução dos testes, o relatório gerado pelo Mochawesome é armazenado na pipeline utilizando a action:
+
+actions/upload-artifact@v4
+
+O relatório fica disponível para download na aba Artifacts da execução do GitHub Actions.
+
+Comando Executado na Pipeline
+npm run unit
+
+Esse comando executa os testes automatizados e gera o relatório na pasta:
+
+mochawesome-report/
+Evidências de Execução
+
+A evidência da execução bem-sucedida pode ser consultada na aba Actions do repositório, onde é possível visualizar:
+
+Execução automática por push.
+Execução manual da pipeline.
+Execução agendada por schedule.
+Logs dos testes automatizados.
+Relatório publicado como artifact.
+
+---
+
 ## 🎓 Conceitos Praticados
 
 - Classes
