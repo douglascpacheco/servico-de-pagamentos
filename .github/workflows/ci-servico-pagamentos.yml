@@ -17,13 +17,10 @@ on:
   workflow_dispatch:
 
   schedule:
-    # execução agendada frequente para gerar evidência antes da entrega
-    # roda a cada 10 minutos
-    - cron: '*/10 * * * *'
-
-    # execução diária às 02:00 da manhã no horário de Brasília
-    # 02:00 BRT = 05:00 UTC
-    - cron: '0 5 * * *'
+    # execução agendada mensal
+    # roda todo dia 1 de cada mês às 05:00 UTC
+    # 05:00 UTC = aproximadamente 02:00 no horário de Brasília
+    - cron: '0 5 1 * *'
 
 # tarefas dentro da pipeline = jobs
 
